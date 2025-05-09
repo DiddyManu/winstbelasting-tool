@@ -1,4 +1,4 @@
-
+import streamlit as st
 import matplotlib.pyplot as plt
 
 def show_tax_graph_with_labels(belastbare_winst_per_persoon):
@@ -31,57 +31,42 @@ def show_tax_graph_with_labels(belastbare_winst_per_persoon):
 
         last_limit = upper
 
-    # Grafiek
-    plt.figure(figsize=(10, 7))
-    bars = plt.bar(labels, taxes, color='skyblue')
-    plt.title("Belasting per persoon per schijf (IRPF Spanje 2025)")
-    plt.xlabel("Belastingtarief + Bedrag")
-    plt.ylabel("Te betalen belasting (€)")
-    plt.grid(axis='y')
+    # Grafiek maken
+    fig, ax = plt.subplots(figsize=(10, 7))
+    bars = ax.bar(labels, taxes, color='skyblue')
+    ax.set_title("Belasting per persoon per schijf (IRPF Spanje 2025)")
+    ax.set_xlabel("Belastingtarief + Bedrag")
+    ax.set_ylabel("Te betalen belasting (€)")
+    ax.grid(axis='y')
 
     for bar, tax in zip(bars, taxes):
-        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + max(taxes)*0.01,
-                 f"€{tax:,.0f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + max(taxes)*0.01,
+                f"€{tax:,.0f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
 
-    # Totale belasting onder grafiek tonen
-    plt.figtext(0.5, 0.01, f"Totale belasting per persoon: €{total_tax:,.2f}",
-                ha="center", fontsize=12, fontweight='bold', color='darkgreen')
-
-    plt.tight_layout(rect=[0, 0.03, 1, 1])  # ruimte onderaan maken voor figtext
-
-    print(f"Totale belasting per persoon: €{total_tax:,.2f}")
-
-    plt.show()
-
+    st.pyplot(fig)
     return total_tax
 
-def run_tax_prompt():
-    try:
-        aankoopprijs = float(input("Wat was de aankoopprijs van de woning (€)? "))
-        verkoopprijs = float(input("Wat is de verkoopprijs van de woning (€)? "))
-        aftrekbare_kosten = float(input("Wat is het totaalbedrag aan aftrekbare kosten (€)? "))
-        deelgenoten = int(input("Met hoeveel personen deel je de woning? "))
+# Streamlit UI
+st.title("🏠 Winstbelastingtool woningverkoop (IRPF Spanje)")
+st.write("Bereken hoeveel belasting je betaalt over de verkoopwinst van een woning als Spaans resident.")
 
-        totale_winst = verkoopprijs - aankoopprijs
-        belastbare_winst = totale_winst - aftrekbare_kosten
+aankoopprijs = st.number_input("Aankoopprijs woning (€)", min_value=0.0, step=1000.0)
+verkoopprijs = st.number_input("Verkoopprijs woning (€)", min_value=0.0, step=1000.0)
+aftrekbare_kosten = st.number_input("Aftrekbare kosten (€)", min_value=0.0, step=500.0)
+deelgenoten = st.number_input("Aantal eigenaren", min_value=1, step=1)
 
-        if belastbare_winst <= 0:
-            print("\nEr is geen belastbare winst. Geen belasting verschuldigd.")
-            return
+if st.button("Bereken belasting"):
+    totale_winst = verkoopprijs - aankoopprijs
+    belastbare_winst = max(totale_winst - aftrekbare_kosten, 0)
+    winst_per_persoon = belastbare_winst / deelgenoten
 
-        winst_per_persoon = belastbare_winst / deelgenoten
+    st.subheader("📊 Resultaten")
+    st.write(f"**Totale winst:** €{totale_winst:,.2f}")
+    st.write(f"**Aftrekbare kosten:** €{aftrekbare_kosten:,.2f}")
+    st.write(f"**Belastbare winst:** €{belastbare_winst:,.2f}")
+    st.write(f"**Belastbare winst per persoon ({deelgenoten}):** €{winst_per_persoon:,.2f}")
 
-        print(f"\nTotale winst: €{totale_winst:,.2f}")
-        print(f"Aftrekbare kosten: €{aftrekbare_kosten:,.2f}")
-        print(f"→ Totale belastbare winst: €{belastbare_winst:,.2f}")
-        print(f"→ Belastbare winst per persoon ({deelgenoten}): €{winst_per_persoon:,.2f}\n")
+    belasting_per_persoon = show_tax_graph_with_labels(winst_per_persoon)
+    totale_belasting = belasting_per_persoon * deelgenoten
 
-        belasting_per_persoon = show_tax_graph_with_labels(winst_per_persoon)
-
-        print(f"\nTotaal te betalen belasting voor {deelgenoten} personen: €{belasting_per_persoon * deelgenoten:,.2f}")
-
-    except ValueError:
-        print("❌ Ongeldige invoer. Gebruik alleen getallen.")
-
-# Start het script
-run_tax_prompt()
+    st.success(f"💰 Totale belasting te betalen: €{totale_belasting:,.2f}")
