@@ -70,3 +70,4 @@ if st.button("Bereken belasting"):
     totale_belasting = belasting_per_persoon * deelgenoten
 
     st.success(f"💰 Totale belasting te betalen: €{totale_belasting:,.2f}")
+    st.info(f"📄 Dat is ongeveer **€{belasting_per_persoon:,.2f} per persoon** bij {deelgenoten} eigenaren.")
