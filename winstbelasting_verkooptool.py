@@ -15,7 +15,7 @@ st.markdown("""
 
 
 # 🔤 Taalkeuze
-language = st.selectbox("🌐 Kies een taal / Choose language / Elige idioma", ["Nederlands", "English", "Español", "Valencià"])
+language = st.selectbox("🌐 Kies een taal / Choose language / Elige idioma / Tria idioma", ["Nederlands", "English", "Español", "Valencià"])
 
 # 🗨️ Teksten per taal
 texts = {
