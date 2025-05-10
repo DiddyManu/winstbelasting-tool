@@ -1,8 +1,21 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
+
+st.set_page_config(
+    page_title="Winstbelastingtool Spanje IRPF 2025 – Gratis belasting calculator",
+    page_icon="💰",
+    layout="centered",
+    initial_sidebar_state="auto",
+)
+
+st.markdown("""
+<meta name="description" content="Bereken gratis hoeveel belasting (IRPF) je betaalt bij verkoop van een woning in Spanje. Meertalig: Nederlands, Engels, Spaans en Valencià.">
+""", unsafe_allow_html=True)
+
+
 # 🔤 Taalkeuze
-language = st.selectbox("🌐 Kies een taal / Choose language / Elige idioma", ["Nederlands", "English", "Español"])
+language = st.selectbox("🌐 Kies een taal / Choose language / Elige idioma", ["Nederlands", "English", "Español", "Valencià"])
 
 # 🗨️ Teksten per taal
 texts = {
@@ -62,7 +75,27 @@ texts = {
         "grafiek_titel": "Impuesto por persona por tramo (IRPF España 2025)",
         "grafiek_x": "Tramo + Importe",
         "grafiek_y": "Impuesto a pagar (€)"
+    },
+    "Valencià": {
+        "title": "🏠 Eina d'impost sobre guanys immobiliaris (IRPF Espanya)",
+        "intro": "Calcula quant impost pagaràs per la venda d'un habitatge com a resident fiscal a Espanya.",
+        "aankoop": "Preu de compra (€)",
+        "verkoop": "Preu de venda (€)",
+        "kosten": "Despeses deduïbles (€)",
+        "eigenaren": "Nombre de propietaris",
+        "bereken": "Calcula l'impost",
+        "resultaten": "📊 Resultats",
+        "totale_winst": "Guany total",
+        "aftrekbare_kosten": "Despeses deduïbles",
+        "belastbare_winst": "Guany subjecte a impostos",
+        "per_persoon": "Guany imposable per persona",
+        "totaal_te_betalen": "💰 Impost total a pagar",
+        "per_persoon_belasting": "📄 Això és aproximadament €{:.2f} per persona ({} propietaris).",
+        "grafiek_titel": "Impost per persona segons tram (IRPF Espanya 2025)",
+        "grafiek_x": "Tram + Import",
+        "grafiek_y": "Impost a pagar (€)"
     }
+
 }
 
 T = texts[language]
@@ -132,3 +165,14 @@ if st.button(T["bereken"]):
 
     st.success(f"{T['totaal_te_betalen']}: €{totaal_belasting:,.2f}")
     st.info(T["per_persoon_belasting"].format(belasting_pp, deelgenoten))
+
+# ℹ️ Juridische disclaimer onderaan
+disclaimers = {
+    "Nederlands": "© 2025 Winstbelasting Tool. Alle rechten voorbehouden. Deze tool is informatief en geen fiscaal advies. Raadpleeg altijd een lokale belastingadviseur.",
+    "English": "© 2025 Capital Gains Tax Tool. All rights reserved. This tool is for informational purposes only and does not constitute tax advice. Always consult a local tax advisor.",
+    "Español": "© 2025 Herramienta de Ganancia Patrimonial. Todos los derechos reservados. Esta herramienta es solo informativa y no constituye asesoramiento fiscal. Consulta siempre a un asesor fiscal local.",
+    "Valencià": "© 2025 Eina d'impost sobre guanys. Tots els drets reservats. Aquesta eina és informativa i no substitueix l'assessorament fiscal. Consulta sempre un assessor fiscal local."
+}
+
+st.markdown("---")
+st.markdown(f"📝 {disclaimers[language]}")
