@@ -1,45 +1,42 @@
-# 🏠 Winstbelasting Tool bij Woningverkoop in Spanje (IRPF)
+# 🏠 Winstbelastingtool Spanje – IRPF 2025
 
-**Bereken eenvoudig hoeveel belasting je betaalt over de verkoopwinst van een woning in Spanje, als resident.**  
-Deze tool werkt in **Nederlands, Engels en Spaans** en volgt de actuele **IRPF-belastingtarieven** voor 2025.
+Bereken gratis hoeveel belasting (IRPF) je betaalt bij verkoop van een woning in Spanje als resident.
 
-🌐 **Talen beschikbaar:** Nederlands / English / Español  
-📊 **Inclusief grafiek per belastingschijf**  
-👥 **Geschikt voor meerdere eigenaren**  
-💼 **Voor residenten in Spanje die verkopen met of zonder winst**
-
-🔗 **Probeer het direct online:**  
-👉 [winstbelasting-tool.streamlit.app](https://winstbelasting-tool-udvlyy8klt2qd44szyunjf.streamlit.app/)
+Deze webtool ondersteunt **Nederlands**, **Engels**, **Spaans** én **Valenciaans**, en is gebaseerd op de officiële IRPF-tarieven van Spanje voor 2025.
 
 ---
 
-## 📈 Functionaliteit
+## 🚀 Start direct
 
-- Voer aankoop- en verkoopprijs in
-- Voeg eventuele aftrekbare kosten toe (zoals notaris of verbouwing)
-- Geef aan met hoeveel eigenaren de woning gedeeld werd
-- Ontvang direct:
-  - Totale belastbare winst
-  - IRPF-belasting per persoon
-  - Grafiek met belastingbedragen per schijf
+👉 [Open de Winstbelastingtool](https://winstbelasting-tool-udvlyy8klt2qd44szyunjf.streamlit.app/)  
+*(Geen installatie nodig – volledig online)*
 
 ---
 
-## 🇳🇱 Zoekwoorden (SEO – Nederlands)
+## 📊 Functionaliteiten
 
-> winstbelasting Spanje, woning verkopen Spanje belasting, IRPF Spanje, belasting verkoop woning buitenland, bereken IRPF woning
-
-## 🇬🇧 Keywords (SEO – English)
-
-> capital gains tax Spain, sell property Spain tax, IRPF calculator Spain, Spanish tax tool property sale, how much tax property Spain
-
-## 🇪🇸 Palabras clave (SEO – Español)
-
-> impuesto ganancia patrimonial España, IRPF vivienda venta, calcular IRPF España, herramienta IRPF 2025, vender casa impuestos
+- ✅ Ondersteuning voor meerdere talen
+- ✅ Directe berekening van je belastbare winst
+- ✅ Aftrekbare kosten invoeren (zoals notaris of verbouwing)
+- ✅ Meerdere eigenaren mogelijk
+- ✅ Duidelijke grafiek per belastingschijf (IRPF Spanje)
 
 ---
 
-## 🧪 Gebouwd met
+## 📈 Zoekwoorden voor Google (SEO)
+
+### 🇳🇱 Nederlands:
+winstbelasting Spanje, verkoop woning belasting Spanje, IRPF berekenen, belasting bij huis verkopen Spanje, woning verkopen buitenland
+
+### 🇬🇧 English:
+capital gains tax Spain, sell house tax Spain, IRPF Spain calculator, tax on property sale Spain, Spanish capital gains 2025
+
+### 🇪🇸 Español:
+IRPF venta vivienda España, impuesto ganancia patrimonial, calcular IRPF España, herramientas IRPF 2025, vender casa impuestos
+
+---
+
+## 📦 Gebouwd met:
 
 - Python
 - Streamlit
@@ -47,14 +44,11 @@ Deze tool werkt in **Nederlands, Engels en Spaans** en volgt de actuele **IRPF-b
 
 ---
 
-## 📂 Gebruik
+## 🛡️ Broncode
 
-Open de app online:  
-**[Klik hier om te starten](https://winstbelasting-tool-udvlyy8klt2qd44szyunjf.streamlit.app/)**
+De tool is vrij toegankelijk via de link hierboven, maar de broncode is auteursrechtelijk beschermd.  
+**Gebruik of reproductie is niet toegestaan zonder schriftelijke toestemming.**
 
-Of clone lokaal:
-```bash
-git clone https://github.com/jouwgebruikersnaam/winstbelasting-tool.git
-cd winstbelasting-tool
-pip install -r requirements.txt
-streamlit run app.py
+---
+
+© 2025 Manu – Alle rechten voorbehouden. Deze tool is informatief en geen vervanging voor fiscaal advies.
