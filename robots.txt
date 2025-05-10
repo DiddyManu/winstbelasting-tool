@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://diddymanu.github.io/winstbelasting-tool/sitemap.xml
+
