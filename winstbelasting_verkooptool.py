@@ -141,6 +141,33 @@ def show_tax_graph_with_labels(winst_pp):
     return total_tax
 
 # Streamlit interface
+# 💅 Stijl en layout verbeteren
+st.markdown("""
+    <style>
+    .main {
+        background-color: #f9f9f9;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        max-width: 800px;
+        margin: auto;
+    }
+    .block-container {
+        padding-top: 2rem;
+    }
+    h1, h2, h3, h4 {
+        color: #003366;
+    }
+    .stButton>button {
+        background-color: #0072c6;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title(T["title"])
 st.write(T["intro"])
 
